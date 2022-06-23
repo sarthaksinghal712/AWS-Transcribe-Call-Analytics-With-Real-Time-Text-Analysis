@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="bg-dark">
+    <div class="bg-dark container-fluid w-100 d-flex text-white"
+        style="justify-content:center; align-items:center; height: 90vh; padding-top:5vh; padding-bottom:5vh;"
+        id="cont">
+        <div class="row w-100" id="row">
+            <div class="col-sm-6 col-xs-12 text-center">
+                <div class="buttn btn-one" onclick="changeHeight('batch')">
+                    <span>Batch Processing</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12 text-center">
+                <div class="buttn btn-one" onclick="changeHeight('real')">
+                    <span>Real Time</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid w-100 text-white"
+        style="display: none; padding-top:calc(10vh + 55px);height:calc(100vh - 55px - 5vh); overflow-y:scroll"
+        id="batchCont">
+        <div class="d-flex p-3" style="border: 2px solid #eee;align-items:center;">
+            <input type="file" name="fileUpload" id="fileUploadButton" />
+            <button type="button" class="btn ml-auto" onclick="upload()" id="uploadToS3">Upload to S3</button>
+        </div><br>
+        <span id="status" class="w-100" style="text-align:justify!important">
+        </span>
+    </div>
+
+    <div class="container-fluid" id="realCont" style="display: none; padding-top:calc(10vh + 55px)">
+
+        <div id="error" class="isa_error"></div>
+
+        <div class="px-3"><textarea id="transcript" oninput="checkValue()" class="w-100"
+                placeholder="Press Start and speak into your mic"></textarea></div>
+        <div class="row w-100 d-flex text-center">
+            <div class="col-1"></div>
+            <div class="col-10 d-flex" style="text-align: center; align-items:center; justify-content: center;">
+                <!-- <button id="start-button" class="button-xl" title="Start Transcription">
+                    <i class="fa fa-microphone"></i> Start
+                </button> -->
+                <button id="start-button" class="btn micItem" style="background-color: #66bb6a;">
+                    <i class="fa fa-microphone"></i>
+                </button>
+                <button id="reset-button" class="btn micItem bg-warning text-white">
+                    <i class="fa fa-undo"></i>
+                </button>
+                <button id="stop-button" class="btn micItem bg-danger text-white" disabled="true">
+                    <i class="fa fa-stop"></i>
+                </button>
+            </div>
+            <div class="col-1">
+                <button id="comprehend-button" class="mx-auto btn micItem bg-black text-white">
+                    <i class="fa fa-magic"></i>
+            </div>
+        </div>
+        <div class="row w-100 d-flex text-center">
+            <div class="col-12">
+                <span id="result" class="text-white"></span>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="footer" class="py-1 w-100 text-center text-white"
+        style="position: fixed; bottom:0px; background-color:rgba(255, 255, 255, 0.1)">&copy; Canara HSBC Life
+        Insurance
+    </div> -->
+    <script src="./assets/main.js"></script>
+</body>
+
+</html>
